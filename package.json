@@ -12,7 +12,8 @@
     "start": "node --env-file-if-exists=.env src/index.js",
     "dev": "node --watch --env-file-if-exists=.env src/index.js",
     "db:migrate": "prisma migrate deploy",
-    "test": "node --env-file-if-exists=.env --test"
+    "test": "node --env-file-if-exists=.env --test",
+    "test:live": "node scripts/live-test.js"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.10.1",
