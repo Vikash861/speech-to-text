@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Speech to Text</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Speech to Text</h1>
+      <p>Hindi + English live transcription</p>
+    </div>
+    <span id="health" class="health">Checking...</span>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="card-head">
+        <h2>Live transcription</h2>
+        <select id="language" aria-label="Language">
+          <option value="auto">Auto-detect (Hinglish)</option>
+          <option value="hi-en">Hindi + English</option>
+          <option value="hi">Hindi</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+
+      <div class="controls">
+        <button id="record" class="record-btn" type="button">Start</button>
+        <span id="timer" class="timer">00:00</span>
+        <span id="status" class="status">Press Start and speak.</span>
+      </div>
+
+      <div id="transcript" class="transcript">
+        <span id="final"></span> <span id="interim" class="interim"></span>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>History</h2>
+        <div class="row">
+          <input id="search" type="search" placeholder="Search..." aria-label="Search">
+          <button id="new" class="btn" type="button">+ New</button>
+        </div>
+      </div>
+      <ul id="list" class="list"></ul>
+    </section>
+  </main>
+
+  <dialog id="editor">
+    <form id="editor-form">
+      <h3 id="editor-heading"></h3>
+      <label>Title <input name="title" maxlength="200" placeholder="Auto-generated if empty"></label>
+      <label>Text <textarea name="text" rows="8" required></textarea></label>
+      <p id="editor-error" class="error"></p>
+      <div class="row end">
+        <button type="button" class="btn ghost" id="cancel">Cancel</button>
+        <button type="submit" class="btn primary">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

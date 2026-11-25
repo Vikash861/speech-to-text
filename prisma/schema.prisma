@@ -1,0 +1,22 @@
+generator client {
+  provider            = "prisma-client"
+  output              = "../generated/prisma"
+  // Import paths end in .ts so Node.js can run the generated client directly, without a build step
+  importFileExtension = "ts"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Transcription {
+  id         Int      @id @default(autoincrement())
+  title      String   @db.VarChar(200)
+  text       String
+  language   String   @default("unknown") @db.VarChar(10) // hi, en, hi-en or unknown
+  durationMs Int      @default(0) @map("duration_ms")
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt  DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@map("transcriptions")
+}
