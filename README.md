@@ -72,6 +72,16 @@ npm test
 
 Tests run against a real PostgreSQL database set in `TEST_DATABASE_URL` (it is created and migrated automatically, and emptied on every run). Gemini is replaced by a fake server, so no API key is needed.
 
+### Live test with the real Gemini API
+
+```bash
+npm start                                            # in one terminal (needs GEMINI_API_KEY)
+npm run test:live                                    # in another terminal
+npm run test:live -- https://your-app.onrender.com   # or against the deployed app
+```
+
+It streams a recorded Hinglish sentence (`test/fixtures/hinglish.wav`) at real-time speed, the same way the browser does, prints the live transcription, and deletes the saved row afterwards.
+
 ## Deploy (Render)
 
 1. Push this repo to GitHub.
