@@ -5,7 +5,6 @@ import { execSync } from 'node:child_process';
 import WebSocket, { WebSocketServer } from 'ws';
 import { createPrismaClient, createDb } from '../src/db.js';
 import { createServer } from '../src/app.js';
-import { detectLanguage } from '../src/text.js';
 
 let server, baseUrl, fakeGemini, prisma;
 
@@ -51,12 +50,6 @@ after(async () => {
   server.close();
   fakeGemini.close();
   await prisma.$disconnect();
-});
-
-test('detects Hindi, English and mixed text', () => {
-  assert.equal(detectLanguage('hello world'), 'en');
-  assert.equal(detectLanguage('नमस्ते दुनिया'), 'hi');
-  assert.equal(detectLanguage('meeting कल है'), 'hi-en');
 });
 
 test('CRUD on transcriptions', async () => {

@@ -83,4 +83,4 @@ Migrations run automatically (`prisma migrate deploy`) every time the service st
 ## Limitations
 
 - A Gemini Live session lasts at most 10 minutes, so recording stops automatically at 9.5 minutes.
-- Language detection is based on script (Devanagari vs Latin), so Hindi words written in English letters count as English.
+- Gemini writes a whole sentence in one script (all Devanagari or all English letters), so the language label counts words using two short lists: Hindi words written in English letters and English words written in Devanagari. Words that are not on the lists can make the label less accurate.
